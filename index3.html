@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>The Beautiful Silence | Sakil ❤️ Habiba</title>
+    <style>
+      /* FONTS */
+      @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Cinzel:wght@400;700&family=Hind+Siliguri:wght@300;400;600;700&display=swap");
+
+      :root {
+        /* COLORS */
+        --cover-color: #3b1e1e;
+        --page-color: #fdf6e3;
+        --text-color: #2c1a0e;
+        --accent: #d4af37;
+
+        /* DIMENSIONS */
+        --book-width: 360px;
+        --book-height: 540px;
+        --duration: 1s;
+      }
+
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      body {
+        margin: 0;
+        background: #050505;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: "Hind Siliguri", sans-serif;
+      }
+
+      /* --- 3D BACKGROUND --- */
+      #canvas-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        background: radial-gradient(circle, #1a1a1a, #000);
+      }
+
+      /* --- BOOK SCENE --- */
+      .scene {
+        width: var(--book-width);
+        height: var(--book-height);
+        perspective: 2000px;
+        z-index: 10;
+        position: relative;
+        transition: all 0.5s ease;
+      }
+
+      .book {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+      }
+
+      /* Desktop: Open book shifts right to show spread */
+      .book.open {
+        transform: translateX(50%);
+      }
+
+      /* --- PAGES --- */
+      .sheet {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: left;
+        transform-style: preserve-3d;
+        transition: transform var(--duration)
+          cubic-bezier(0.645, 0.045, 0.355, 1);
+        cursor: pointer;
+      }
+
+      .front,
+      .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--page-color);
+        backface-visibility: hidden;
+        padding: 35px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 0 5px 5px 0;
+        box-shadow: inset 3px 0 15px rgba(0, 0, 0, 0.1);
+        background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+      }
+
+      .back {
+        transform: rotateY(180deg);
+        border-radius: 5px 0 0 5px;
+        background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.15),
+          transparent 10%
+        );
+      }
+      .front {
+        background-image: linear-gradient(
+          to left,
+          rgba(0, 0, 0, 0.1),
+          transparent 5%
+        );
+      }
+
+      /* Cover Styles */
+      .cover {
+        background: linear-gradient(135deg, #3e1a1f 0%, #3b1f1f 100%);
+        border: 2px solid #1a0b0b;
+        box-shadow: inset 10px 0 20px rgba(0, 0, 0, 0.5);
+      }
+      .cover-inside {
+        background: #2a1515;
+      }
+
+      /* Typography */
+      h1 {
+        font-family: "Cinzel", serif;
+        font-size: 1.8rem;
+        color: var(--accent);
+        margin-bottom: 15px;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 8px;
+      }
+      h2 {
+        font-family: "Hind Siliguri", sans-serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #8b5a2b;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      p {
+        font-family: "Hind Siliguri", sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: var(--text-color);
+        margin-bottom: 12px;
+        font-weight: 400;
+      }
+      .page-num {
+        position: absolute;
+        bottom: 15px;
+        font-size: 0.8rem;
+        color: #888;
+        font-family: sans-serif;
+      }
+      .final-quote {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.6rem;
+        color: #c23b22;
+        margin-top: 15px;
+        transform: rotate(-2deg);
+        line-height: 1.4;
+      }
+
+      /* Author Name Styling */
+      .author-name {
+        font-family: "Cinzel", serif;
+        font-size: 0.85rem;
+        color: var(--accent);
+        margin-top: 40px;
+        letter-spacing: 2px;
+        opacity: 0.85;
+      }
+
+      /* Z-Index Stacking */
+      #s1 { z-index: 8; }
+      #s2 { z-index: 7; }
+      #s3 { z-index: 6; }
+      #s4 { z-index: 5; }
+      #s5 { z-index: 4; }
+      #s6 { z-index: 3; }
+      #s7 { z-index: 2; }
+      #s8 { z-index: 1; }
+
+      .flipped {
+        transform: rotateY(-180deg);
+      }
+
+      /* Mobile Controls */
+      .mobile-controls {
+        display: none;
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        justify-content: center;
+        gap: 20px;
+        z-index: 50;
+      }
+      .nav-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--accent);
+        padding: 10px 30px;
+        border-radius: 30px;
+        font-family: "Hind Siliguri", sans-serif;
+        font-size: 0.95rem;
+        cursor: pointer;
+        backdrop-filter: blur(5px);
+        transition: background 0.3s;
+      }
+      .nav-btn:active {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      /* Hint */
+      #hint {
+        position: absolute;
+        bottom: 30px;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.9rem;
+        animation: pulse 2s infinite;
+        z-index: 20;
+        pointer-events: none;
+        width: 100%;
+        text-align: center;
+      }
+      @keyframes pulse {
+        50% {
+          opacity: 0.5;
+          transform: translateY(-3px);
+        }
+      }
+
+      /* MOBILE RESPONSIVENESS */
+      @media (max-width: 768px) {
+        :root {
+          --book-width: 85vw;
+          --book-height: 65vh;
+        }
+        .scene {
+          margin-left: 0px;
+          perspective: 1000px;
+        }
+        .book.open {
+          transform: translateX(0) !important;
+        }
+        #hint {
+          display: none;
+        }
+        .mobile-controls {
+          display: flex;
+        }
+        h1 {
+          font-size: 1.5rem;
+        }
+        h2 {
+          font-size: 1.05rem;
+        }
+        p {
+          font-size: 0.95rem;
+        }
+        .front,
+        .back {
+          padding: 25px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas-container"></div>
+    <div id="hint">বইটি খুলতে এখানে ক্লিক করুন &rarr;</div>
+
+    <div class="scene">
+      <div class="book" id="book">
+        
+        <!-- PAGE 1: COVER -->
+        <div class="sheet" id="s1" onclick="flip(1)">
+          <div class="front cover">
+            <div
+              style="
+                border: 2px solid #d4af37;
+                padding: 20px;
+                height: 90%;
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <h1>The Beautiful<br />Silence</h1>
+              <p
+                style="
+                  color: #d4af37;
+                  font-family: 'Cinzel', serif;
+                  font-size: 0.85rem;
+                  margin-top: 30px;
+                  letter-spacing: 1px;
+                "
+              >
+                A Story of Unspoken Love<br />
+                <span style="font-size: 0.75rem; color: #fff;">Sakil ❤️ Habiba</span>
+              </p>
+
+              <div class="author-name">Written by Tamim Rahman</div>
+            </div>
+          </div>
+          <div class="back cover-inside"></div>
+        </div>
+
+        <!-- PAGE 2: PART 1 -->
+        <div class="sheet" id="s2" onclick="flip(2)">
+          <div class="front">
+            <h2>পর্ব ১: সূচনা</h2>
+            <p>
+              হাবিবা, আমাদের এই পথচলা কোনো সিনেমার মতো হুট করে শুরু হওয়া রঙিন গল্প ছিল না। এটা ছিল ভোরের প্রথম মৃদু আলোর মতো এক স্নিগ্ধ সূচনা।
+            </p>
+            <p>
+              পৃথিবীর সব ব্যস্ততা আর কোলাহলের মাঝে খুব চুপচাপভাবে তোমার প্রতি আমার এই অনুভূতিগুলো জন্ম নিয়েছে। তোমার দিকে তাকিয়ে থাকতে থাকতে কখন যে আমার পুরো পৃথিবীটা তোমাকে ঘিরে ঘুরতে শুরু করলো, আমি বুঝতেও পারিনি।
+            </p>
+            <span class="page-num">১</span>
+          </div>
+          <div class="back"></div>
+        </div>
+
+        <!-- PAGE 3: PART 2 -->
+        <div class="sheet" id="s3" onclick="flip(3)">
+          <div class="front">
+            <h2>পর্ব ২: তোমার উপস্থিতি</h2>
+            <p>
+              তুমি যখন আমার সামনে আসো, চারপাশের বাতাসটাও যেন বদলে যায়। জীবনের সমস্ত অস্থিরতা আর বিষাদ নিমেষেই এক শান্ত ও মধুর সুরে পরিণত হয়।
+            </p>
+            <p>
+              আমার হৃদয়ের সমস্ত ঝড় থামিয়ে দেওয়ার জন্য কেবল তোমার এক চিলতে উপস্থিতিয়েই যথেষ্ট। তুমি হয়তো নিজেও জানো না, তোমার মাঝে কত সুন্দর আর অলৌকিক এক আলো লুকিয়ে আছে।
+            </p>
+            <span class="page-num">২</span>
+          </div>
+          <div class="back"></div>
+        </div>
+
+        <!-- PAGE 4: PART 3 -->
+        <div class="sheet" id="s4" onclick="flip(4)">
+          <div class="front">
+            <h2>পর্ব ৩: ছোট ছোট মুহূর্ত</h2>
+            <p>
+              আমি প্রতিদিন খুব মনোযোগ দিয়ে তোমার ছোট ছোট অভ্যাসগুলো লক্ষ করি। তোমার ওই গভীর চোখ দুটো, যখন হাসির ঠিক আগের মুহূর্তে সামান্য সংকুচিত হয়ে ওঠে—সেটা দেখার অদ্ভুত সুন্দর এক অনুভূতি!
+            </p>
+            <p>
+              খুব সাধারণ কোনো জিনিসে তোমার ছোটদের মতো আনন্দিত হওয়া, এই নিষ্পাপ সরলতাটাই প্রতিদিন আমাকে নতুন করে তোমার প্রেমে ফেলে দেয়।
+            </p>
+            <span class="page-num">৩</span>
+          </div>
+          <div class="back"></div>
+        </div>
+
+        <!-- PAGE 5: PART 4 -->
+        <div class="sheet" id="s5" onclick="flip(5)">
+          <div class="front">
+            <h2>পর্ব ৪: মিষ্টি অনুভূতির সন্ধে</h2>
+            <p>তোমার কি সেই বিশেষ বিকেলগুলোর কথা মনে আছে? যখন আমরা দুজন পাশাপাশি বসতাম?</p>
+            <p>
+              প্রতিদিন বিকেলে বা সন্ধ্যায় তোমার সাথে কথা বলাটাই ছিল আমার সারাদিনের সেরা অনুভূতি। আমি চাইতাম সেই মুহূর্তেই যেন সময় থেমে যাক—তুমি শুধু বলে যাবে আর আমি সারাজীবন নিঃশব্দে তা শুনে যাবো।
+            </p>
+            <span class="page-num">৪</span>
+          </div>
+          <div class="back"></div>
+        </div>
+
+        <!-- PAGE 6: PART 5 -->
+        <div class="sheet" id="s6" onclick="flip(6)">
+          <div class="front">
+            <h2>পর্ব ৫: ভালোবাসার আসল অর্থ</h2>
+            <p>
+              তোমাকে নীরবে ভালোবেসে আমি একটা জিনিস অনুধাবন করেছি। সত্যিকারের ভালোবাসা কখনো অধিকার দেখায় না, কখনোই জোর করে দাবি করে না "তুমি কি আমার হবে?"
+            </p>
+            <p>
+              ভালোবাসা তো খুব গোপনে চুপিচুপি বলে দেয়—"আমি সবটুকু দিয়ে শুধুই তোমার।" তোমার প্রতিটি হাসিতেই লুকিয়ে আছে আমার সমস্ত জীবনের নিখাদ সুখ।
+            </p>
+            <span class="page-num">৫</span>
+          </div>
+          <div class="back"></div>
+        </div>
+
+        <!-- PAGE 7: PART 6 -->
+        <div class="sheet" id="s7" onclick="flip(7)">
+          <div class="front">
+            <h2>পর্ব ৬: আমার প্রার্থনা</h2>
+            <p>আমি সবসময় নীরবে তোমার আড়ালে দাঁড়িয়ে তোমার সমস্ত সাফল্যের জন্য প্রার্থনা করে যাবো, তোমার হাসির কারণ হয়ে থাকবো।</p>
+            <p class="final-quote">
+              "সবসময় এমন সুন্দর করে হেসে যেও...<br />আর নিজের যত্ন নিও, হাবিবা।"
+            </p>
+            <span class="page-num">৬</span>
+          </div>
+          <div class="back"></div>
+        </div>
+
+        <!-- PAGE 8: END & BACK COVER -->
+        <div class="sheet" id="s8" onclick="flip(8)">
+          <div
+            class="front cover-inside"
+            style="
+              background: #2a1515;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <h2 style="color: #8b5a2b; border: none; font-size: 1.5rem">সমাপ্তি</h2>
+          </div>
+          <div
+            class="back cover"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            "
+          >
+            <p
+              style="
+                color: #d4af37;
+                font-family: 'Cinzel', serif;
+                margin-bottom: 5px;
+              "
+            >
+              Written by
+            </p>
+            <h1 style="border: none; font-size: 1.5rem; margin: 0">
+              Tamim Rahman
+            </h1>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mobile-controls">
+      <button class="nav-btn" onclick="prevPage()">পেছনে</button>
+      <button class="nav-btn" onclick="nextPage()">সামনে</button>
+    </div>
+
+    <!-- THREE.JS IMPORT -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module">
+      import * as THREE from "three";
+
+      // --- THREE.JS BACKGROUND ---
+      const container = document.getElementById("canvas-container");
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      camera.position.z = 20;
+
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      container.appendChild(renderer.domElement);
+
+      // PARTICLES
+      const pGeo = new THREE.BufferGeometry();
+      const pCount = 2000;
+      const pPos = new Float32Array(pCount * 3);
+      for (let i = 0; i < pCount * 3; i++)
+        pPos[i] = (Math.random() - 0.5) * 100;
+      pGeo.setAttribute("position", new THREE.BufferAttribute(pPos, 3));
+
+      const pMat = new THREE.PointsMaterial({
+        color: 0x88ccff,
+        size: 0.15,
+        transparent: true,
+        opacity: 0.5,
+        sizeAttenuation: true,
+        blending: THREE.AdditiveBlending,
+      });
+      const particles = new THREE.Points(pGeo, pMat);
+      scene.add(particles);
+
+      // MOUSE
+      let mouseX = 0;
+      let mouseY = 0;
+      if (window.matchMedia("(pointer: fine)").matches) {
+        window.addEventListener("mousemove", (e) => {
+          mouseX = (e.clientX - window.innerWidth / 2) * 0.05;
+          mouseY = (e.clientY - window.innerHeight / 2) * 0.05;
+        });
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        particles.rotation.y += 0.0005;
+        camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+        camera.position.y += (-mouseY * 0.5 - camera.position.y) * 0.05;
+        camera.lookAt(0, 0, 0);
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    </script>
+
+    <script>
+      // --- BOOK FLIPPING LOGIC ---
+      let currentSheet = 0;
+      const totalSheets = 8;
+      const book = document.getElementById("book");
+
+      function flip(sheetNum) {
+        const sheet = document.getElementById("s" + sheetNum);
+
+        if (sheet.classList.contains("flipped")) {
+          // GOING BACK
+          sheet.classList.remove("flipped");
+          setTimeout(() => {
+            sheet.style.zIndex = totalSheets - sheetNum + 1;
+          }, 500);
+          if (sheetNum === 1) book.classList.remove("open");
+          currentSheet = sheetNum - 1;
+        } else {
+          // GOING FORWARD
+          sheet.classList.add("flipped");
+          sheet.style.zIndex = sheetNum;
+          if (sheetNum === 1) book.classList.add("open");
+          currentSheet = sheetNum;
+        }
+      }
+
+      function nextPage() {
+        if (currentSheet < totalSheets) flip(currentSheet + 1);
+      }
+      function prevPage() {
+        if (currentSheet > 0) flip(currentSheet);
+      }
+    </script>
+  </body>
+</html>
