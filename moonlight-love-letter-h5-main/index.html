@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1.0,viewport-fit=cover"
+/>
+
+<title>তোমার জন্য একটি চাঁদের আলোয় লেখা চিঠি</title>
+
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+
+.creator-credit {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.7;
+    opacity: 0.75;
+}
+
+.creator-credit span {
+    font-size: 11px;
+    opacity: 0.85;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<audio
+    id="bgm"
+    src="music/music.wav"
+    loop
+    preload="auto"
+    autoplay
+    playsinline>
+</audio>
+
+
+<canvas id="stars"></canvas>
+<canvas id="particles"></canvas>
+<canvas id="fireworks"></canvas>
+<canvas id="climax"></canvas>
+<canvas id="roseFx"></canvas>
+
+
+<div class="moon"></div>
+<div class="vignette"></div>
+
+
+<!-- উপরের বার -->
+
+<div class="topbar">
+
+    <div class="progress">
+        <span id="bar"></span>
+    </div>
+
+    <button class="music" id="music">
+        <i class="dot"></i>
+        <span>গান চালু করুন</span>
+    </button>
+
+</div>
+
+
+
+<main class="app">
+
+
+<!-- =========================
+     অধ্যায় ০
+========================= -->
+
+<section class="page active" id="p0">
+
+    <div class="card">
+
+        <div class="badge">
+            চাঁদের আলোয় লেখা একটি বিশেষ চিঠি
+        </div>
+
+
+        <h1 class="gradient">
+            তোমার জন্য চাঁদের আলোয় একটি চিঠি লিখছি
+        </h1>
+
+
+        <p class="sub">
+            খুব বেশি শব্দের কোনো চমক নয়,
+            শুধু একটু একটু করে তোমার কাছে
+            এগিয়ে আসার একটুকরো অনুভূতি।
+        </p>
+
+
+        <div class="loader">
+
+            <div class="track">
+
+                <div
+                    class="fill"
+                    id="fill">
+                </div>
+
+            </div>
+
+
+            <div
+                class="loaderText"
+                id="loaderText">
+
+                তারার আলো, ফুলের পাপড়ি
+                আর হৃদস্পন্দন সংগ্রহ করা হচ্ছে...
+
+            </div>
+
+        </div>
+
+
+        <div class="btns">
+
+            <button
+                id="start"
+                style="display:none">
+
+                এই চিঠিটি খুলুন
+
+            </button>
+
+        </div>
+
+
+        <!-- Creator Credit -->
+
+        <p class="creator-credit">
+
+            Designed & Programmed by Tamim Rahman
+
+            <br>
+
+            <span>
+                The words and feelings here are Sakil's ❤️
+            </span>
+
+        </p>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     অধ্যায় ০১
+========================= -->
+
+<section
+    class="page"
+    id="p1">
+
+    <div class="card">
+
+
+        <div class="badge">
+            অধ্যায় ০১ · প্রথম দেখা
+        </div>
+
+
+        <h1 class="gradient">
+            কিছু কিছু দেখা যেন
+            চাঁদের আলো হয়ে হৃদয়ে নামে
+        </h1>
+
+
+        <div
+            class="type"
+            id="type1">
+        </div>
+
+
+        <p class="sub">
+            আমি ভেবেছিলাম এটা শুধু একটি
+            সাধারণ দিন। তারপর তুমি এলে,
+            আর সেই সাধারণ দিনটাও যেন
+            একটু আলো পেয়ে গেল।
+        </p>
+
+
+        <div class="btns">
+
+            <button
+                data-next="2"
+                class="next">
+
+                এগিয়ে চলি
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     অধ্যায় ০২
+========================= -->
+
+<section
+    class="page"
+    id="p2">
+
+    <div class="card">
+
+
+        <div class="badge">
+            অধ্যায় ০২ · কাছে আসা
+        </div>
+
+
+        <h1 class="gradient">
+            মনের কথাগুলো একটি চিঠিতে লিখে রাখি
+        </h1>
+
+
+        <div class="letter">
+
+
+            <p>
+                কিছু কথা আমি অনেকবার বলার
+                চেষ্টা করেছি।
+            </p>
+
+
+            <p>
+                ভয় হয়েছে খুব হঠাৎ হয়ে যাবে,
+                আবার মনে হয়েছে হয়তো কথাগুলো
+                যথেষ্ট আন্তরিকভাবে বলা হবে না।
+            </p>
+
+
+            <p>
+                কিন্তু যতই নিজের মধ্যে
+                লুকিয়ে রাখতে চেয়েছি,
+                তোমাকে দেখলেই সেই কথাগুলো
+                আরও স্পষ্ট হয়ে উঠেছে।
+            </p>
+
+
+            <p>
+                তাই আজ এই ছোট্ট জায়গাটার মাধ্যমে
+                মনের কথাগুলো ধীরে ধীরে
+                তোমাকে বলতে চাই।
+            </p>
+
+
+            <div class="signature">
+                —— তোমার জন্য, বিশেষ একজনের জন্য
+            </div>
+
+
+        </div>
+
+
+        <div class="btns">
+
+            <button
+                data-next="3"
+                class="next">
+
+                তারার উত্তর দেখি
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     অধ্যায় ০৩
+========================= -->
+
+<section
+    class="page"
+    id="p3">
+
+    <div class="card">
+
+
+        <div class="badge">
+            অধ্যায় ০৩ · মনের অনুভূতি
+        </div>
+
+
+        <h1 class="gradient">
+            তারাদের দিয়ে আমার উত্তর বলতে দাও
+        </h1>
+
+
+        <p class="sub">
+            তারাগুলো প্রথমে হৃদয়,
+            নাম আর ভালোবাসার শব্দে
+            পরিণত হবে। তারপর শুরু হবে
+            চাঁদের আলোয় এক সিনেমার মতো
+            ভালোবাসার মুহূর্ত।
+        </p>
+
+
+        <div class="scene">
+
+
+            <svg
+                viewBox="0 0 900 520"
+                class="romance-svg"
+                id="romanceSvg">
+
+
+                <defs>
+
+
+                    <radialGradient
+                        id="cleanMoon"
+                        cx="36%"
+                        cy="32%"
+                        r="68%">
+
+                        <stop
+                            offset="0%"
+                            stop-color="#ffffff"/>
+
+                        <stop
+                            offset="38%"
+                            stop-color="#fff6d2"/>
+
+                        <stop
+                            offset="72%"
+                            stop-color="#ffd98e"/>
+
+                        <stop
+                            offset="100%"
+                            stop-color="rgba(255,217,142,.10)"/>
+
+                    </radialGradient>
+
+
+
+                    <radialGradient
+                        id="cleanHalo"
+                        cx="50%"
+                        cy="50%"
+                        r="62%">
+
+                        <stop
+                            offset="0%"
+                            stop-color="rgba(255,255,255,.55)"/>
+
+                        <stop
+                            offset="45%"
+                            stop-color="rgba(255,217,142,.20)"/>
+
+                        <stop
+                            offset="100%"
+                            stop-color="rgba(255,217,142,0)"/>
+
+                    </radialGradient>
+
+
+
+                    <radialGradient
+                        id="galaxyCore"
+                        cx="50%"
+                        cy="50%"
+                        r="58%">
+
+                        <stop
+                            offset="0%"
+                            stop-color="rgba(255,255,255,.75)"/>
+
+                        <stop
+                            offset="28%"
+                            stop-color="rgba(255,216,142,.34)"/>
+
+                        <stop
+                            offset="58%"
+                            stop-color="rgba(255,126,182,.20)"/>
+
+                        <stop
+                            offset="100%"
+                            stop-color="rgba(148,226,255,0)"/>
+
+                    </radialGradient>
+
+
+
+                    <linearGradient
+                        id="auroraA"
+                        x1="0"
+                        x2="1">
+
+                        <stop
+                            offset="0%"
+                            stop-color="rgba(255,126,182,0)"/>
+
+                        <stop
+                            offset="42%"
+                            stop-color="rgba(255,126,182,.72)"/>
+
+                        <stop
+                            offset="100%"
+                            stop-color="rgba(183,232,255,0)"/>
+
+                    </linearGradient>
+
+
+
+                    <linearGradient
+                        id="auroraB"
+                        x1="0"
+                        x2="1">
+
+                        <stop
+                            offset="0%"
+                            stop-color="rgba(183,232,255,0)"/>
+
+                        <stop
+                            offset="50%"
+                            stop-color="rgba(183,232,255,.66)"/>
+
+                        <stop
+                            offset="100%"
+                            stop-color="rgba(255,217,142,0)"/>
+
+                    </linearGradient>
+
+
+                </defs>
+
+
+
+                <!-- বড় চাঁদ ও আলো -->
+
+                <circle
+                    class="cleanHalo"
+                    cx="450"
+                    cy="160"
+                    r="218"
+                    fill="url(#cleanHalo)"/>
+
+
+                <circle
+                    class="cleanMoon"
+                    cx="450"
+                    cy="160"
+                    r="128"
+                    fill="url(#cleanMoon)"/>
+
+
+
+                <!-- আকাশের নরম আলো -->
+
+                <path
+                    class="aurora aurora1"
+                    d="M40 310 C190 210 300 250 430 200 C580 140 700 230 860 150 L860 255 C710 342 580 250 430 315 C286 376 180 318 40 410Z"
+                    fill="url(#auroraA)"/>
+
+
+                <path
+                    class="aurora aurora2"
+                    d="M20 372 C170 270 316 318 455 254 C602 188 720 310 880 222 L880 326 C720 404 600 302 455 374 C314 444 172 384 20 480Z"
+                    fill="url(#auroraB)"/>
+
+
+
+                <!-- গ্যালাক্সি -->
+
+                <ellipse
+                    class="galaxyGlow"
+                    cx="450"
+                    cy="306"
+                    rx="315"
+                    ry="118"
+                    fill="url(#galaxyCore)"/>
+
+
+                <path
+                    class="cleanRibbon r1"
+                    d="M150 326 C248 244 356 224 455 274 C560 328 650 320 760 236"/>
+
+
+                <path
+                    class="cleanRibbon r2"
+                    d="M122 370 C260 288 376 294 478 348 C590 408 710 374 810 284"/>
+
+
+                <path
+                    class="cleanRibbon r3"
+                    d="M178 274 C310 178 440 180 560 236 C660 284 730 244 800 176"/>
+
+
+                <path
+                    class="cleanRibbon r4"
+                    d="M265 330 C358 290 450 292 536 326 C608 354 684 344 742 302"/>
+
+
+
+                <!-- চাঁদের প্রতিফলন -->
+
+                <path
+                    class="reflection ref1"
+                    d="M332 430 C396 410 504 410 568 430"/>
+
+
+                <path
+                    class="reflection ref2"
+                    d="M282 462 C370 438 530 438 618 462"/>
+
+
+                <path
+                    class="reflection ref3"
+                    d="M230 492 C350 462 550 462 670 492"/>
+
+
+
+                <!-- উল্কা -->
+
+                <path
+                    class="cleanMeteor cm1"
+                    d="M145 88 L270 150"/>
+
+
+                <path
+                    class="cleanMeteor cm2"
+                    d="M620 70 L790 154"/>
+
+
+                <path
+                    class="cleanMeteor cm3"
+                    d="M178 210 L320 280"/>
+
+
+                <path
+                    class="cleanMeteor cm4"
+                    d="M658 286 L818 366"/>
+
+
+
+                <!-- তারাগুলো -->
+
+                <circle
+                    class="cleanDot d1"
+                    cx="170"
+                    cy="132"
+                    r="5"/>
+
+
+                <circle
+                    class="cleanDot d2"
+                    cx="250"
+                    cy="105"
+                    r="4"/>
+
+
+                <circle
+                    class="cleanDot d3"
+                    cx="738"
+                    cy="112"
+                    r="5"/>
+
+
+                <circle
+                    class="cleanDot d4"
+                    cx="785"
+                    cy="258"
+                    r="4"/>
+
+
+                <circle
+                    class="cleanDot d5"
+                    cx="142"
+                    cy="345"
+                    r="5"/>
+
+
+                <circle
+                    class="cleanDot d6"
+                    cx="462"
+                    cy="42"
+                    r="4"/>
+
+
+                <circle
+                    class="cleanDot d7"
+                    cx="710"
+                    cy="420"
+                    r="4"/>
+
+
+                <circle
+                    class="cleanDot d8"
+                    cx="260"
+                    cy="418"
+                    r="4"/>
+
+
+            </svg>
+
+
+            <div
+                class="scene-caption"
+                id="caption">
+
+                বোতামে ক্লিক করুন,
+                তারাগুলো তোমার জন্য কথা বলা শুরু করবে ✨
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="btns">
+
+
+            <button id="answer">
+
+                তারাদের দিয়ে উত্তর তৈরি করো
+
+            </button>
+
+
+            <button
+                id="nameBtn"
+                class="secondary">
+
+                তার নাম সেট করুন
+
+            </button>
+
+
+            <button
+                data-next="4"
+                class="next secondary">
+
+                শেষ কথাগুলো পড়ুন
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     অধ্যায় ০৪
+========================= -->
+
+<section
+    class="page"
+    id="p4">
+
+    <div class="card">
+
+
+        <div class="badge">
+            অধ্যায় ০৪ · ভালোবাসার কথা
+        </div>
+
+
+        <h1 class="gradient">
+            আমি তোমাকে পছন্দ করি ❤️
+        </h1>
+
+
+        <div class="letter">
+
+
+            <p>
+                এটা কোনো হঠাৎ করে তৈরি হওয়া
+                অনুভূতি নয়।
+                বরং অনেক সাধারণ মুহূর্তের মধ্য দিয়ে
+                ধীরে ধীরে আরও নিশ্চিত হওয়া
+                একটি অনুভূতি।
+            </p>
+
+
+            <p>
+                আমি তোমার কাছে সত্যি করে
+                এগিয়ে আসতে চাই।
+                তোমার দিনের ছোট ছোট গল্প শুনতে চাই।
+                তোমার সাথে সাধারণ দিনগুলোও
+                সুন্দর করে কাটাতে চাই।
+            </p>
+
+
+            <p>
+                আমি চাই তোমার পাশে থেকে
+                তোমার হাসির মুহূর্তগুলো ভাগ করে নিতে
+                এবং কঠিন সময়েও পাশে থাকার চেষ্টা করতে।
+            </p>
+
+
+            <p>
+
+                <b>
+                    তাই বলছি,
+                    তোমার পছন্দের মানুষ হয়ে
+                    তোমার জীবনের পরের পথটুকুতে
+                    কি আমার পাশে থাকার সুযোগ হবে?
+                </b>
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="btns">
+
+
+            <button id="yes">
+
+                ❤️ তোমার কথাটা শুনতে চাই
+
+            </button>
+
+
+            <button
+                id="wait"
+                class="secondary">
+
+                আমাকে একটু সময় দাও
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     অধ্যায় ০৫
+========================= -->
+
+<section
+    class="page"
+    id="p5">
+
+    <div class="card">
+
+
+        <h1 class="gradient final-title">
+
+            তাহলে আজ থেকেই শুরু হোক ❤️
+
+        </h1>
+
+
+        <p class="final-text">
+
+            আগামী দিনের গল্প আমরা জানি না।
+            তবে চাই, আমাদের প্রতিটি সুন্দর মুহূর্ত
+            চাঁদের আলো, তারার আকাশ,
+            ফুলের পাপড়ি আর ভালোবাসার
+            স্মৃতির মতো মনে থেকে যাক।
+
+        </p>
+
+
+
+        <div class="btns">
+
+
+            <button id="again">
+
+                আবার আতশবাজি দেখুন
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="location.href='index3.html'">
+
+                📖 আমাদের ডায়েরি দেখুন
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="location.href='index5.html'">
+
+                ❤️ আমাদের পুরো গল্প দেখুন
+
+            </button>
+
+
+            <button
+                class="secondary"
+                onclick="location.reload()">
+
+                আবার শুরু থেকে দেখুন
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>
