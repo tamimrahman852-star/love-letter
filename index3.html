@@ -188,12 +188,17 @@
         opacity: 0.85;
       }
 
-      /* Music Toggle Button */
-      .music-btn {
+      /* TOP NAVIGATION CONTROLS */
+      .top-controls {
         position: fixed;
         top: 20px;
         right: 20px;
         z-index: 100;
+        display: flex;
+        gap: 10px;
+      }
+
+      .music-btn, .story-link-btn {
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid var(--accent);
         color: var(--accent);
@@ -204,9 +209,37 @@
         cursor: pointer;
         backdrop-filter: blur(5px);
         transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
-      .music-btn:hover {
-        background: rgba(212, 175, 55, 0.2);
+
+      .music-btn:hover, .story-link-btn:hover {
+        background: rgba(212, 175, 55, 0.25);
+        color: #ffffff;
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+      }
+
+      /* STORY BUTTON INSIDE BOOK PAGE */
+      .page-story-btn {
+        margin-top: 20px;
+        background: linear-gradient(135deg, #d4af37, #aa820a);
+        color: #1a0b0b;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-family: "Hind Siliguri", sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+      .page-story-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        color: #000;
       }
 
       /* Z-Index Stacking */
@@ -310,8 +343,11 @@
       আপনার ব্রাউজারে অডিও প্লেয়ারটি সাপোর্ট করছে না।
     </audio>
 
-    <!-- MUSIC TOGGLE BUTTON -->
-    <button class="music-btn" id="music-btn" onclick="toggleMusic()">🎵 মিউজিক চালু</button>
+    <!-- TOP CONTROLS -->
+    <div class="top-controls">
+      <a href="index5.html" class="story-link-btn">❤️ আমাদের পুরো গল্প দেখুন</a>
+      <button class="music-btn" id="music-btn" onclick="toggleMusic()">🎵 মিউজিক চালু</button>
+    </div>
 
     <div id="canvas-container"></div>
     <div id="hint">বইটি খুলতে এখানে ক্লিক করুন &rarr;</div>
@@ -447,11 +483,14 @@
             style="
               background: #2a1515;
               display: flex;
+              flex-direction: column;
               justify-content: center;
               align-items: center;
             "
           >
-            <h2 style="color: #8b5a2b; border: none; font-size: 1.5rem">সমাপ্তি</h2>
+            <h2 style="color: #8b5a2b; border: none; font-size: 1.5rem; margin-bottom: 10px;">সমাপ্তি</h2>
+            <!-- বইয়ের ভেতরের শেষ পাতায় গল্পের লিঙ্ক বাটন -->
+            <a href="index5.html" class="page-story-btn">❤️ আমাদের পুরো গল্প দেখুন</a>
           </div>
           <div
             class="back cover"
