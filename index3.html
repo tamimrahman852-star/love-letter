@@ -306,8 +306,7 @@
   <body>
     <!-- AUDIO ELEMENT -->
     <audio id="bg-music" loop>
-      <!-- আপনার নিজের অডিও ফাইল বা অনলাইন লিঙ্ক এখানে বসান -->
-      <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=soft-piano-100-bpm-121529.mp3" type="audio/mpeg" />
+      <source src="music/love.mp3" type="audio/mpeg" />
       আপনার ব্রাউজারে অডিও প্লেয়ারটি সাপোর্ট করছে না।
     </audio>
 
@@ -600,7 +599,7 @@
       const book = document.getElementById("book");
 
       function flip(sheetNum) {
-        startAudio(); // বইয়ের পাতা ওল্টানোর সময় অডিও চালু করা
+        startAudio();
         const sheet = document.getElementById("s" + sheetNum);
 
         if (sheet.classList.contains("flipped")) {
