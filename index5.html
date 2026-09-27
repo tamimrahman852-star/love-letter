@@ -1363,29 +1363,29 @@
             audioPlayerBox.classList.remove("playing");
         });
 
-        /* =========================================================
-           RELATIONSHIP LIVE COUNTER
-        ========================================================= */
-        // Relationship start date (Customizable)
-        const startDate = new Date("2023-01-01T00:00:00");
+   /* =========================================================
+   RELATIONSHIP LIVE COUNTER
+========================================================= */
+// Relationship start date (5 September 2024)
+const startDate = new Date("2024-09-05T00:00:00");
 
-        function updateCounter() {
-            const now = new Date();
-            const diff = now - startDate;
+function updateCounter() {
+    const now = new Date();
+    const diff = now - startDate;
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / 1000 / 60) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / 1000 / 60) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
 
-            document.getElementById("countDays").textContent = days < 10 ? "0" + days : days;
-            document.getElementById("countHours").textContent = hours < 10 ? "0" + hours : hours;
-            document.getElementById("countMinutes").textContent = minutes < 10 ? "0" + minutes : minutes;
-            document.getElementById("countSeconds").textContent = seconds < 10 ? "0" + seconds : seconds;
-        }
+    document.getElementById("countDays").textContent = days < 10 ? "0" + days : days;
+    document.getElementById("countHours").textContent = hours < 10 ? "0" + hours : hours;
+    document.getElementById("countMinutes").textContent = minutes < 10 ? "0" + minutes : minutes;
+    document.getElementById("countSeconds").textContent = seconds < 10 ? "0" + seconds : seconds;
+}
 
-        setInterval(updateCounter, 1000);
-        updateCounter();
+setInterval(updateCounter, 1000);
+updateCounter();
 
         /* =========================================================
            REASONS GENERATOR
